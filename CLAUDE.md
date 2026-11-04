@@ -13,19 +13,9 @@ This repository is the Claude Code marketplace `gm` (`.claude-plugin/marketplace
 
 Adding a plugin means adding its folder, its entry in `marketplace.json` and its row in the README table.
 
-## Checks
+## Commands and rules
 
-Run after every change:
-
-```sh
-claude plugin validate .                 # marketplace
-claude plugin validate plugins/<name>    # manifest and hooks module
-claude plugin test plugins/<name>        # *.test.ts
-```
-
-Type-check with `npx -p typescript tsc` and a tsconfig kept outside the repo, its `include` naming the engine's `claude-code.d.ts`, the plugin's `hooks/` and its `*.test.ts`. The plugin-authoring skill names the current path of `claude-code.d.ts` and the compiler options when it loads. The engine does not write `.claude-plugin/types/` for a plugin loaded from a marketplace or under `claude -p`.
-
-The plugin directory's README, LICENSE and icon warnings do not apply: this marketplace is private.
+@CONTRIBUTING.md
 
 ## Running it
 
