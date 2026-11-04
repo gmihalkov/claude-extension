@@ -2,6 +2,13 @@
 
 Rules for the agent that develops mods and skills in this repository.
 
+## Requirements
+
+- [Claude Code](https://code.claude.com), signed in: `just code-test`, `just verify` and `just types-update` run the `claude` CLI.
+- [just](https://just.systems): runs every command below.
+- [Bun](https://bun.sh): `bunx` runs Prettier, Biome and TypeScript at their pinned versions.
+- Git with access to this private repository on GitHub.
+
 ## Commands
 
 Every command runs through `just` and covers the whole repository. Tools run through `bunx` at the versions pinned in the `justfile`; there is no `package.json`.
