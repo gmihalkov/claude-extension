@@ -1,0 +1,6 @@
+{
+  "name": "refine",
+  "version": "0.1.0",
+  "description": "Two-phase clarification interview: WHAT, then HOW, each compacted to its document",
+  "types": "./types/index.d.ts"
+}

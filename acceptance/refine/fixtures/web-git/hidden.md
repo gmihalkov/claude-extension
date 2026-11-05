@@ -1,0 +1,7 @@
+- The search box sits above the list; placeholder text `Search products`.
+- Filtering is case-insensitive and matches anywhere in the product name, not in the price.
+- Filtering happens on every keystroke; no button.
+- When nothing matches, the list area shows `No products match "<query>"`.
+- Clearing the box shows the full list again.
+- The query is not kept after a page reload.
+- Checking it: open index.html in a browser, type `lamp` → only "Desk lamp" and "Floor lamp" remain; type `zzz` → the empty message.

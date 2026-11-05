@@ -1,5 +1,8 @@
 {
   "name": "gm",
   "owner": { "name": "Gleb Mikhalkov" },
-  "plugins": [{ "name": "hello", "source": "./plugins/hello" }]
+  "plugins": [
+    { "name": "hello", "source": "./plugins/hello" },
+    { "name": "refine", "source": "./plugins/refine" }
+  ]
 }

@@ -16,6 +16,7 @@ Plugins are read straight from the folder. To update: `git pull`, then `/reload-
 
 ## Plugins
 
-| Plugin  | What it is                                                 |
-| ------- | ---------------------------------------------------------- |
-| `hello` | Throwaway skeleton: a `/hello` command and a `greet` skill |
+| Plugin   | What it is                                                           |
+| -------- | -------------------------------------------------------------------- |
+| `hello`  | Throwaway skeleton: a `/hello` command and a `greet` skill           |
+| `refine` | Two-phase clarification interview (`/refine <task>`): WHAT, then HOW |

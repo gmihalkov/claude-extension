@@ -1,0 +1,6 @@
+- `python3 todo.py done <id>` marks the task with that id as completed; ids are the numbers `list` prints.
+- `list` shows completed tasks with `[x]` and open ones with `[ ]`.
+- Marking an already completed task again is not an error; it prints `already done`.
+- An unknown id prints `no such task: <id>` to stderr and exits with code 1.
+- Completed tasks are never deleted by this command.
+- Old `tasks.json` files without a completion flag must keep working (treat as open).

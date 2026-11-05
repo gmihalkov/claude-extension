@@ -1,0 +1,1 @@
+Turn ledger.py into a double-entry bookkeeping tool.

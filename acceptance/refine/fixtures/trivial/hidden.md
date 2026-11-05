@@ -1,0 +1,3 @@
+- The new text is exactly `Hello, refine` with no trailing punctuation.
+- Nothing else about the script changes.
+- Checking it: run `python3 greet.py` and see `Hello, refine`.

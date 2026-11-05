@@ -1,0 +1,1 @@
+Add an option to csvsum.py to skip the header row of the input file.

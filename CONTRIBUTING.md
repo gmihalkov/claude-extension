@@ -46,6 +46,7 @@ Group imports in this order, with a blank line between groups. `just code-format
 
 ## Code style
 
+- A TypeScript file exports at most one thing (a function, a constant or a type) and is named after it in kebab-case: `loadInterview` lives in `load-interview.ts`. A helper used only by that export stays in the file unexported. Scripts and tests export nothing.
 - A control statement always has a block. `if (condition) return true` is forbidden:
 
   ```ts

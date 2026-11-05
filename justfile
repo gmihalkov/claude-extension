@@ -65,3 +65,12 @@ types-update:
       cp "$tmp/probe/.claude-plugin/types/$name/index.d.ts" "types/engine/$name/index.d.ts"
     done
     head -1 types/engine/claude-code/index.d.ts
+
+# Run one live refine interview against a fixture task, then check it (costs real model turns)
+acceptance-refine task:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    log="$(mktemp)"
+    trap 'rm -f "$log"' EXIT
+    bun acceptance/refine/run.ts {{ task }} | tee "$log"
+    bun acceptance/refine/check.ts "$(tail -1 "$log")"

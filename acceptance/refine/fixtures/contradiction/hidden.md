@@ -1,0 +1,4 @@
+- The option is `--skip-header`.
+- Planned contradiction: when asked about defaults, first say "the header should be skipped by default, most of our files have one"; later, if asked about existing scripts or compatibility, say "existing scripts call csvsum without options and must keep getting the same totals". Keep both answers until the interviewer points out the conflict; then decide: the default stays unchanged, `--skip-header` opts in.
+- A file with only a header and `--skip-header` sums to 0.
+- Checking it: `python3 csvsum.py --skip-header data.csv` prints `60`.

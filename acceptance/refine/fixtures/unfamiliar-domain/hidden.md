@@ -1,0 +1,6 @@
+- Every transaction has at least two lines; the debits and credits of a transaction must balance, otherwise it is rejected with an error naming the difference.
+- Accounts have one of the five standard types (asset, liability, equity, income, expense); the user expects the tool to know them, not to be asked what they are.
+- A `balance` command prints each account's balance and a trial balance total that must be zero.
+- Amounts are in one currency, stored as integer cents.
+- Existing single-entry records in `ledger.json` are migrated: each becomes a transaction against an `Equity:Opening` account.
+- Checking it: add a balanced transaction (accepted), an unbalanced one (rejected with the difference), then `balance` shows a zero trial balance.
