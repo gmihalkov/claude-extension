@@ -13,5 +13,8 @@ test('what to how transition', async () => {
   await runAdvanceInterview(fake.$, { ...INTERVIEW, pending: 'next' });
 
   expect(fake.store.get(storeKey(ROOT))).toEqual({ ...INTERVIEW, phase: 'how' });
+  // Submitting inside session.compact would be refused, so the kickoff waits for the hook to answer.
+  expect(fake.submitted).toHaveLength(0);
+  await fake.tick();
   expect(fake.submitted).toHaveLength(1);
 });

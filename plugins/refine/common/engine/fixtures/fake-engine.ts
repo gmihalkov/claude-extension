@@ -28,6 +28,7 @@ type Fake = {
   runs: string[][];
   submitted: string[];
   commands: { command: string; args?: string }[];
+  tick: () => Promise<void>;
 };
 
 function normalize(path: string): string {
@@ -69,6 +70,7 @@ export function fakeEngine(options: FakeOptions = {}): Fake {
   const runs: string[][] = [];
   const submitted: string[] = [];
   const commands: { command: string; args?: string }[] = [];
+  const timers: (() => void)[] = [];
   const real = (path: string) => {
     const plain = normalize(path);
 
@@ -209,6 +211,13 @@ export function fakeEngine(options: FakeOptions = {}): Fake {
         return {};
       },
     },
+    clock: {
+      after: (_ms: number, fn: () => void) => {
+        timers.push(fn);
+
+        return { cancel: () => undefined };
+      },
+    },
   };
 
   return {
@@ -218,5 +227,13 @@ export function fakeEngine(options: FakeOptions = {}): Fake {
     runs,
     submitted,
     commands,
+    // Fires the pending timers, as the engine does once the hook has answered.
+    tick: async () => {
+      for (const fn of timers.splice(0)) {
+        fn();
+      }
+
+      await Promise.resolve();
+    },
   };
 }

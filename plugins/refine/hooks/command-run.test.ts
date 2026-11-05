@@ -46,7 +46,21 @@ test('start creates the folder, journal and interview', async () => {
 
   expect(fake.files.get(`${DIR}/journal.json`)).toBe('[]');
   expect(fake.store.get(storeKey(ROOT))).toMatchObject({ phase: 'what', task: 'add CSV export' });
+  // Submitting inside command.run would be refused, so the kickoff waits for the hook to answer.
+  expect(fake.submitted).toHaveLength(0);
+  await fake.tick();
   expect(fake.submitted).toHaveLength(1);
+});
+
+test('continue queues /compact after the hook answers', async () => {
+  const fake = fakeEngine({ store: { [storeKey(ROOT)]: INTERVIEW } });
+
+  await refine(fake, 'continue');
+
+  expect(fake.store.get(storeKey(ROOT))).toMatchObject({ pending: 'continue' });
+  expect(fake.commands).toHaveLength(0);
+  await fake.tick();
+  expect(fake.commands).toEqual([{ command: 'compact' }]);
 });
 
 test('non-git start warns', async () => {

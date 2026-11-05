@@ -1,6 +1,7 @@
 import type { MatchedHook } from 'claude-code';
 
 import { parseCommandArgs } from '../common/command-args/helpers/parse-command-args';
+import { runLater } from '../common/engine/commands/run-later';
 import { queryInterview } from '../common/interview/queries/query-interview';
 import { runEndInterview } from '../common/interview-end/commands/run-end-interview';
 import { runStartInterview } from '../common/interview-start/commands/run-start-interview';
@@ -52,7 +53,7 @@ export const commandRun: MatchedHook<'command.run', { readonly command: 'refine'
       return { text: `${text}\nSend any message to begin.`, context: [kickoff] };
     }
 
-    void $.prompt.submit({ text: kickoff });
+    runLater($, () => $.prompt.submit({ text: kickoff }));
 
     return { text };
   }
@@ -90,7 +91,7 @@ export const commandRun: MatchedHook<'command.run', { readonly command: 'refine'
       }
 
       await runClosePhase($, interview);
-      void $.command.run({ command: 'compact' });
+      runLater($, () => $.command.run({ command: 'compact' }));
 
       return { text: 'refine: phase closed; the transition runs when this turn ends.' };
     }
